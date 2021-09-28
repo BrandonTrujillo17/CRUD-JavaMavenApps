@@ -1,0 +1,23 @@
+/*
+PostgreSQL Backup
+Database: conexionMaven/public
+Backup Time: 2021-09-25 20:46:48
+*/
+
+DROP TABLE IF EXISTS "public"."estudiante";
+CREATE TABLE "estudiante" (
+  "idestudiante" varchar(10) COLLATE "pg_catalog"."default" NOT NULL,
+  "primernombre" varchar(50) COLLATE "pg_catalog"."default",
+  "segundonombre" varchar(50) COLLATE "pg_catalog"."default",
+  "primerapellido" varchar(50) COLLATE "pg_catalog"."default",
+  "segundoapellido" varchar(50) COLLATE "pg_catalog"."default",
+  "activo" bool
+)
+;
+ALTER TABLE "estudiante" OWNER TO "postgres";
+BEGIN;
+LOCK TABLE "public"."estudiante" IN SHARE MODE;
+DELETE FROM "public"."estudiante";
+INSERT INTO "public"."estudiante" ("idestudiante","primernombre","segundonombre","primerapellido","segundoapellido","activo") VALUES ('S18012157', 'Brandon', 'Adalit', 'Trujillo', 'Capistran', 't'),('S18012235', 'José', 'Gabriel', 'Mora', 'Cortinez', 't'),('S17012159', 'Maria', 'Mariela', 'Gómez', 'Pérez', 'f'),('S18012134', 'Brandon', 'Adalit', 'Trujillo', 'Capistran', 'f'),('S18012153', 'Brandon', 'Adalit', 'Trujiilo', 'Capis', 'f'),('S18012156', 'Brandon', 'Adalit', 'Trujillo', 'Capistran', 'f'),('S21081757', 'Manuel', 'Javier', 'Franco', 'Jimenez', 'f'),('S18022152', 'Brandon', 'Adalit', 'Trujillo', 'Capistran', 'f'),('S17022254', 'Luis', 'Emmanuel', 'Franco', 'Gütierrez', 't'),('S215867521', 'Jorge', '*No existe*', 'Ruíz', 'Cortínez', 't');
+COMMIT;
+ALTER TABLE "estudiante" ADD CONSTRAINT "estudiante_pkey" PRIMARY KEY ("idestudiante");
