@@ -65,5 +65,8 @@ public class Estudiante {
         return activo;
     }
     
+    public String getNombreCompleto(){
+        return primerNombre+" "+segundoNombre+" "+primerApellido+" "+segundoApellido;
+    }
     
 }

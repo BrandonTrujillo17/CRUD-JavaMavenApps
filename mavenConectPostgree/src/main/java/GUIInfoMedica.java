@@ -1,4 +1,8 @@
 
+import DAO.DAOInfoSalud;
+import pocos.InfoSalud;
+
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -10,13 +14,30 @@
  *
  * @author josuecg
  */
-public class GUIInfoMedica extends javax.swing.JFrame {
-
-    /**
-     * Creates new form GUIInfoMedica
-     */
+public final class GUIInfoMedica extends javax.swing.JFrame {
+    DAOInfoSalud daoInfoSalud = new DAOInfoSalud();
+    
     public GUIInfoMedica() {
         initComponents();
+        cargarDatosSalud(CRUD.estudianteObtenido.getIdEstudiante());
+    }
+    
+    public void cargarDatosSalud(String matricula){
+        InfoSalud infoSalud = daoInfoSalud.returnDatosSalud(matricula);
+        if(CRUD.estudianteObtenido.getSegundoNombre().equals("*No existe*")){
+            CRUD.estudianteObtenido.setSegundoNombre("");
+        }
+        this.lbNombreEstudiante.setText(CRUD.estudianteObtenido.getNombreCompleto());
+        if(infoSalud.getIdInfo()==0){
+            this.lbNumeroSeguro.setText("Información pendiente");
+            this.lbTipoSanguineo.setText("Información pendiente");
+            this.lbTipoSeguro.setText("Información pendiente");
+        }else{
+            this.lbNumeroSeguro.setText(infoSalud.getNumeroSeguro());
+            this.lbTipoSanguineo.setText(infoSalud.getTipoSangre());
+            this.lbTipoSeguro.setText(infoSalud.getTipoSeguro());
+        }
+        
     }
 
     /**
@@ -69,12 +90,16 @@ public class GUIInfoMedica extends javax.swing.JFrame {
             }
         });
 
+        lbNombreEstudiante.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         lbNombreEstudiante.setText("<nombre_estudiante>");
 
+        lbNumeroSeguro.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         lbNumeroSeguro.setText("<numero_seguro>");
 
+        lbTipoSeguro.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         lbTipoSeguro.setText("<tipo_seguro>");
 
+        lbTipoSanguineo.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         lbTipoSanguineo.setText("<grupo_sanguineo>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
