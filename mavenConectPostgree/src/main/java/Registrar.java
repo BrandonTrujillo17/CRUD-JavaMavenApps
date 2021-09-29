@@ -1,8 +1,11 @@
 
+import DAO.DAOColegio;
 import DAO.DAOEstudiante;
 import java.awt.TrayIcon;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import pocos.Colegio;
 import pocos.Estudiante;
 
 
@@ -11,7 +14,9 @@ public class Registrar extends javax.swing.JFrame {
     public Registrar() {
         initComponents();
         verificarAccion();
+        llenarCombo();
     }
+    
 
     boolean esEdicion = false;
     Estudiante editarEstudiante = CRUD.estudianteObtenido;
@@ -31,6 +36,15 @@ public class Registrar extends javax.swing.JFrame {
         txtSegundoNombre.setText(editarEstudiante.getSegundoNombre());
         txtPrimerApellido.setText(editarEstudiante.getPrimerApellido());
         txtSegundoApellido.setText(editarEstudiante.getSegundoApellido());
+        
+    }
+    
+    void llenarCombo(){
+        cbColegios.removeAllItems();
+        ArrayList<Colegio> colegios = DAOColegio.ObtenerColegios();
+        for (int i = 0; i < colegios.size(); i++){
+            cbColegios.addItem(colegios.get(i).getNombreColegio());
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -51,6 +65,9 @@ public class Registrar extends javax.swing.JFrame {
         btnRegistrar_Editar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         lbMensaje = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        btn_nuevoColegio = new javax.swing.JButton();
+        cbColegios = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 51, 0));
@@ -94,47 +111,62 @@ public class Registrar extends javax.swing.JFrame {
         lbMensaje.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbMensaje.setForeground(new java.awt.Color(255, 0, 0));
 
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel7.setText("Colegio: ");
+
+        btn_nuevoColegio.setBackground(new java.awt.Color(153, 255, 153));
+        btn_nuevoColegio.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        btn_nuevoColegio.setText("Nuevo colegio");
+        btn_nuevoColegio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nuevoColegioActionPerformed(evt);
+            }
+        });
+
+        cbColegios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 153, Short.MAX_VALUE)
-                .addComponent(lbTitulo)
-                .addGap(123, 123, 123))
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lbMensaje)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnCancelar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 391, Short.MAX_VALUE)
-                            .addComponent(btnRegistrar_Editar))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtPrimerNombre)
-                                .addComponent(txtSegundoNombre)
-                                .addComponent(txtPrimerApellido)
-                                .addComponent(txtSegundoApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)))))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPrimerApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
+                    .addComponent(txtSegundoNombre)
+                    .addComponent(txtSegundoApellido)
+                    .addComponent(txtPrimerNombre)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(lbMensaje)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnRegistrar_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbColegios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_nuevoColegio))
+                    .addComponent(txtMatricula, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(33, 33, 33))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lbTitulo)
+                .addGap(160, 160, 160))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(lbTitulo)
-                .addGap(35, 35, 35)
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -154,13 +186,21 @@ public class Registrar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtSegundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbMensaje)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrar_Editar)
-                    .addComponent(btnCancelar))
-                .addGap(23, 23, 23))
+                    .addComponent(jLabel7)
+                    .addComponent(cbColegios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_nuevoColegio))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(lbMensaje))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnRegistrar_Editar)
+                            .addComponent(btnCancelar))))
+                .addGap(64, 64, 64))
         );
 
         pack();
@@ -172,6 +212,8 @@ public class Registrar extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    
+    
     private void btnRegistrar_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_EditarActionPerformed
         txtMatricula.setBorder(BorderFactory.createLineBorder(java.awt.Color.GRAY));
         txtPrimerNombre.setBorder(BorderFactory.createLineBorder(java.awt.Color.GRAY));
@@ -184,6 +226,8 @@ public class Registrar extends javax.swing.JFrame {
         String segundoNombre = txtSegundoNombre.getText();
         String primerApellido = txtPrimerApellido.getText();
         String segundoApellido = txtSegundoApellido.getText();
+        String claveColegio = "";
+        
         boolean esCorrecto = true;
         boolean sonMuchosCaracteres = false;
         
@@ -231,7 +275,7 @@ public class Registrar extends javax.swing.JFrame {
                 txtSegundoApellido.setBorder(BorderFactory.createLineBorder(java.awt.Color.red));
             }
         }
-        
+       
         int resultado;
         boolean matriculaRepetida = DAOEstudiante.verificarMatriculaRepetida(matricula);
         
@@ -240,7 +284,7 @@ public class Registrar extends javax.swing.JFrame {
                 lbMensaje.setText("");
                 if(!esEdicion){
                     if(!matriculaRepetida){
-                        resultado = DAOEstudiante.registrarEstudiante(matricula, primerNombre, segundoNombre, primerApellido, segundoApellido);
+                        resultado = DAOEstudiante.registrarEstudiante(matricula, primerNombre, segundoNombre, primerApellido, segundoApellido, claveColegio);
                         if(resultado > 0){
                             JOptionPane.showMessageDialog(null, "El Estudiante se registró exitosamente", "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
                             regresarCrud();
@@ -251,7 +295,7 @@ public class Registrar extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "La matrícula que usted proporcionó ya se encuentra registrada", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
                     }
                 }else{
-                    resultado = DAOEstudiante.editarEstudiante(matricula, primerNombre, segundoNombre, primerApellido, segundoApellido, editarEstudiante.getIdEstudiante());
+                    resultado = DAOEstudiante.editarEstudiante(matricula, primerNombre, segundoNombre, primerApellido, segundoApellido, claveColegio, editarEstudiante.getIdEstudiante());
                     if(resultado > 0){
                         JOptionPane.showMessageDialog(null, "El estudiante fue editado exitosamente", "Edición exitosa", JOptionPane.INFORMATION_MESSAGE);
                         regresarCrud();
@@ -266,6 +310,11 @@ public class Registrar extends javax.swing.JFrame {
             lbMensaje.setText("* Favor de llenar todos los campos");
         }
     }//GEN-LAST:event_btnRegistrar_EditarActionPerformed
+
+    private void btn_nuevoColegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoColegioActionPerformed
+        registrarColegio registrar = new registrarColegio();
+        registrar.setVisible(true);
+    }//GEN-LAST:event_btn_nuevoColegioActionPerformed
 
     public void regresarCrud(){
         CRUD crud = new CRUD();
@@ -285,11 +334,14 @@ public class Registrar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnRegistrar_Editar;
+    private javax.swing.JButton btn_nuevoColegio;
+    private javax.swing.JComboBox<String> cbColegios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel lbMensaje;
     private javax.swing.JLabel lbTitulo;
     private javax.swing.JTextField txtMatricula;
