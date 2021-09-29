@@ -60,7 +60,7 @@ public class DAOEstudiante {
         return esRepetida;
     }
     
-    public static int registrarEstudiante (String matricula, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido){
+    public static int registrarEstudiante (String matricula, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String claveColegio){
         int resultado = 0;
         try{
             Connection conn = Conexion.Conectar();
@@ -71,6 +71,7 @@ public class DAOEstudiante {
             consulta.setString(3, segundoNombre);
             consulta.setString(4, primerApellido);
             consulta.setString(5, segundoApellido);
+            consulta.setString(6, claveColegio);
             resultado = consulta.executeUpdate();
             conn.close();
             consulta.close();
@@ -80,7 +81,7 @@ public class DAOEstudiante {
         return resultado;
     }
     
-    public static int editarEstudiante (String matricula, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String idEstudianteComparacion){
+    public static int editarEstudiante (String matricula, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String claveColegio, String idEstudianteComparacion){
         int resultado = 0;
         try{
             Connection conn = Conexion.Conectar();
@@ -91,7 +92,8 @@ public class DAOEstudiante {
             consulta.setString(3, segundoNombre);
             consulta.setString(4, primerApellido);
             consulta.setString(5, segundoApellido);
-            consulta.setString(6, idEstudianteComparacion);
+            consulta.setString(6, claveColegio);
+            consulta.setString(7, idEstudianteComparacion);
             resultado = consulta.executeUpdate();
             conn.close();
             consulta.close();
