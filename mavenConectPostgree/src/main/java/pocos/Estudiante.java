@@ -16,6 +16,8 @@ public class Estudiante {
     private String primerApellido = "";
     private String segundoApellido = "";
     private boolean activo = true;
+    private String claveColegio = "";
+    private String nombreColegio = "";
 
     public void setIdEstudiante(String idEstudiante) {
         this.idEstudiante = idEstudiante;
@@ -41,6 +43,15 @@ public class Estudiante {
         this.activo = activo;
     }
 
+    public void setClaveColegio(String claveColegio) {
+        this.claveColegio = claveColegio;
+    }
+
+    public void setNombreColegio(String nombreColegio) {
+        this.nombreColegio = nombreColegio;
+    }
+    
+
     public String getIdEstudiante() {
         return idEstudiante;
     }
@@ -64,6 +75,12 @@ public class Estudiante {
     public boolean isActivo() {
         return activo;
     }
-    
-    
+
+    public String getClaveColegio() {
+        return claveColegio;
+    }
+
+    public String getNombreColegio() {
+        return nombreColegio;
+    }
 }

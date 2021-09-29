@@ -1,6 +1,7 @@
 
 package DAO;
 
+import DAO.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,17 +18,19 @@ public class DAOEstudiante {
         ArrayList<Estudiante> estudiantes = new ArrayList<>();
         try{
             Connection conn = Conexion.Conectar();
-            String consulta = "Select * from Estudiante where activo = 't';";
+            String consulta = "Select e.*, c.nombre_colegio from Estudiante e INNER JOIN colegio c on e.idcolegio = c.idcolegio where estado = 't';";
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery(consulta);
             while(rs.next()){
                 Estudiante estudiantesObtenidos = new Estudiante();
-                estudiantesObtenidos.setIdEstudiante(rs.getString(1));
-                estudiantesObtenidos.setPrimerNombre(rs.getString(2));
-                estudiantesObtenidos.setSegundoNombre(rs.getString(3));
-                estudiantesObtenidos.setPrimerApellido(rs.getString(4));
-                estudiantesObtenidos.setSegundoApellido(rs.getString(5));
-                estudiantesObtenidos.setActivo(rs.getBoolean(6));
+                estudiantesObtenidos.setIdEstudiante(rs.getString("idestudiante"));
+                estudiantesObtenidos.setPrimerNombre(rs.getString("primer_nom"));
+                estudiantesObtenidos.setSegundoNombre(rs.getString("seg_nom"));
+                estudiantesObtenidos.setPrimerApellido(rs.getString("primer_ape"));
+                estudiantesObtenidos.setSegundoApellido(rs.getString("seg_ape"));
+                estudiantesObtenidos.setActivo(rs.getBoolean("estado"));
+                estudiantesObtenidos.setClaveColegio(rs.getString("idcolegio"));
+                estudiantesObtenidos.setNombreColegio(rs.getString("nombre_colegio"));
                 estudiantes.add(estudiantesObtenidos);
             }
             conn.close();
@@ -45,7 +48,7 @@ public class DAOEstudiante {
         boolean esRepetida = false;
         try{
             Connection conn = Conexion.Conectar();
-            PreparedStatement consulta = conn.prepareStatement("Select * from Estudiante where idEstudiante = ?");
+            PreparedStatement consulta = conn.prepareStatement("Select * from estudiante where idEstudiante = ?");
             consulta.setString(1, matricula);
             ResultSet resultado = consulta.executeQuery();
             if(resultado.next()){
@@ -60,17 +63,18 @@ public class DAOEstudiante {
         return esRepetida;
     }
     
-    public static int registrarEstudiante (String matricula, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido){
+    public static int registrarEstudiante (String matricula, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String claveColegio){
         int resultado = 0;
         try{
             Connection conn = Conexion.Conectar();
-            PreparedStatement consulta = conn.prepareStatement("INSERT INTO Estudiante (idEstudiante, primerNombre, segundoNombre, primerApellido, segundoApellido, activo) "
-                    + "VALUES (?, ?, ?, ?, ?, 't');");
+            PreparedStatement consulta = conn.prepareStatement("INSERT INTO Estudiante (idestudiante, primer_nom, primer_ape, seg_nom, seg_ape, estado, idcolegio) "
+                    + "VALUES (?, ?, ?, ?, ?, 't', ?);");
             consulta.setString(1, matricula);
             consulta.setString(2, primerNombre);
-            consulta.setString(3, segundoNombre);
-            consulta.setString(4, primerApellido);
+            consulta.setString(3, primerApellido);
+            consulta.setString(4, segundoNombre);
             consulta.setString(5, segundoApellido);
+            consulta.setString(6, claveColegio);
             resultado = consulta.executeUpdate();
             conn.close();
             consulta.close();
@@ -80,18 +84,19 @@ public class DAOEstudiante {
         return resultado;
     }
     
-    public static int editarEstudiante (String matricula, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String idEstudianteComparacion){
+    public static int editarEstudiante (String matricula, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String claveColegio, String idEstudianteComparacion){
         int resultado = 0;
         try{
             Connection conn = Conexion.Conectar();
-            PreparedStatement consulta = conn.prepareStatement("Update Estudiante set idEstudiante = ?, primerNombre = ?, segundoNombre = ?, primerApellido = ?, segundoApellido = ? "
-                    + "Where idEstudiante = ?");
+            PreparedStatement consulta = conn.prepareStatement("Update Estudiante set idEstudiante = ?, primer_nom = ?, primer_ape = ?, seg_nom = ?, seg_ape = ?, "
+                    + "idcolegio = ? Where idEstudiante = ?");
             consulta.setString(1, matricula);
             consulta.setString(2, primerNombre);
-            consulta.setString(3, segundoNombre);
-            consulta.setString(4, primerApellido);
+            consulta.setString(3, primerApellido);
+            consulta.setString(4, segundoNombre);
             consulta.setString(5, segundoApellido);
-            consulta.setString(6, idEstudianteComparacion);
+            consulta.setString(6, claveColegio);
+            consulta.setString(7, idEstudianteComparacion);
             resultado = consulta.executeUpdate();
             conn.close();
             consulta.close();
