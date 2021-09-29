@@ -17,7 +17,7 @@ public class DAOEstudiante {
         ArrayList<Estudiante> estudiantes = new ArrayList<>();
         try{
             Connection conn = Conexion.Conectar();
-            String consulta = "Select * from Estudiante where activo = 't';";
+            String consulta = "Select * from Estudiante where estado = 'f';";
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery(consulta);
             while(rs.next()){
