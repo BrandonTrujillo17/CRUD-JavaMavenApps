@@ -12,6 +12,7 @@ public class Tutor {
     
     private int idTutor;
     private int idEstudiante;
+    private String nombreEstudiante;
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
@@ -29,6 +30,14 @@ public class Tutor {
 
     public int getIdEstudiante() {
         return idEstudiante;
+    }
+    
+    public String getNombreEstudiante() {
+        return nombreEstudiante;
+    }
+
+    public void setNombreEstudiante(String nombreEstudiante) {
+        this.nombreEstudiante = nombreEstudiante;
     }
 
     public void setIdEstudiante(int idEstudiante) {
