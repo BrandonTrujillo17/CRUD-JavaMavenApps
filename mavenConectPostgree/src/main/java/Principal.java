@@ -89,6 +89,7 @@ public class Principal extends javax.swing.JFrame {
     private void btn_gestionEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gestionEstudiantesActionPerformed
         CRUD crud = new CRUD();
         crud.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btn_gestionEstudiantesActionPerformed
 
     /**
