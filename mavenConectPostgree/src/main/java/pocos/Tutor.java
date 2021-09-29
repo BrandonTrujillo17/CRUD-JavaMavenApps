@@ -16,6 +16,8 @@ public class Tutor {
     private String apellidoPaterno;
     private String apellidoMaterno;
     private String dirección;
+    private String numeroFijo;
+    private String numeroCelular;
 
     public int getIdTutor() {
         return idTutor;
@@ -63,6 +65,22 @@ public class Tutor {
 
     public void setDirección(String dirección) {
         this.dirección = dirección;
+    }
+
+    public String getNumeroFijo() {
+        return numeroFijo;
+    }
+
+    public void setNumeroFijo(String numeroFijo) {
+        this.numeroFijo = numeroFijo;
+    }
+
+    public String getNumeroCelular() {
+        return numeroCelular;
+    }
+
+    public void setNumeroCelular(String numeroCelular) {
+        this.numeroCelular = numeroCelular;
     }
     
 }
