@@ -10,9 +10,9 @@ public class Conexion {
         Connection conn = null;
         try{
             
-            String url = "jdbc:postgresql://localhost:5432/conexionMaven?";
-            String user = "postgres";
-            String password = "Trujillo17.";
+            String url = "jdbc:postgresql://localhost:5432/dapp?";
+            String user = "capi";
+            String password = "12345";
 
             conn = DriverManager.getConnection(url, user, password);
             if(conn != null){
