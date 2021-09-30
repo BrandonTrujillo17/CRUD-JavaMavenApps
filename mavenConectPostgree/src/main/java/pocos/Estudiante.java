@@ -75,6 +75,7 @@ public class Estudiante {
     public boolean isActivo() {
         return activo;
     }
+<<<<<<< HEAD
 
     public String getClaveColegio() {
         return claveColegio;
@@ -83,4 +84,11 @@ public class Estudiante {
     public String getNombreColegio() {
         return nombreColegio;
     }
+=======
+    
+    public String getNombreCompleto(){
+        return primerNombre+" "+segundoNombre+" "+primerApellido+" "+segundoApellido;
+    }
+    
+>>>>>>> main
 }

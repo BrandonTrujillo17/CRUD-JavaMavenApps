@@ -76,6 +76,7 @@ public class CRUD extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSpinner1 = new javax.swing.JSpinner();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaEstudiantes = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -84,6 +85,10 @@ public class CRUD extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
         btnInfoMedica = new javax.swing.JButton();
+<<<<<<< HEAD
+=======
+        btnOrigen = new javax.swing.JButton();
+>>>>>>> main
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -148,6 +153,18 @@ public class CRUD extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
+=======
+        btnOrigen.setBackground(new java.awt.Color(153, 153, 255));
+        btnOrigen.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
+        btnOrigen.setText("Datos de origen");
+        btnOrigen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrigenActionPerformed(evt);
+            }
+        });
+
+>>>>>>> main
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -157,12 +174,22 @@ public class CRUD extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+<<<<<<< HEAD
                         .addGap(0, 186, Short.MAX_VALUE)
+=======
+                        .addGap(0, 0, Short.MAX_VALUE)
+>>>>>>> main
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCerrar, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btnInfoMedica)
+<<<<<<< HEAD
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+=======
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnOrigen)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+>>>>>>> main
                                 .addComponent(btnRegistrar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,7 +199,11 @@ public class CRUD extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(139, 139, 139)
                 .addComponent(jLabel1)
+<<<<<<< HEAD
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
+                .addContainerGap(147, Short.MAX_VALUE))
+>>>>>>> main
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +215,12 @@ public class CRUD extends javax.swing.JFrame {
                     .addComponent(btnRegistrar)
                     .addComponent(btnEliminar)
                     .addComponent(btnEditar)
+<<<<<<< HEAD
                     .addComponent(btnInfoMedica))
+=======
+                    .addComponent(btnInfoMedica)
+                    .addComponent(btnOrigen))
+>>>>>>> main
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
@@ -239,6 +275,20 @@ public class CRUD extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_btnInfoMedicaActionPerformed
 
+<<<<<<< HEAD
+=======
+    private void btnOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrigenActionPerformed
+        this.obtenerSeleccion();
+       if(estudianteObtenido.getIdEstudiante().equals("")){
+           JOptionPane.showMessageDialog(null, "Debe seleccionar un estudiante");
+       }else{
+           GUIOrigen guiOrigen = new GUIOrigen();
+           guiOrigen.setVisible(true);
+           this.setVisible(false);
+       }
+    }//GEN-LAST:event_btnOrigenActionPerformed
+
+>>>>>>> main
     private void eliminarEstudiante(){
         obtenerSeleccion();
         if(haySeleccion){
@@ -291,9 +341,14 @@ public class CRUD extends javax.swing.JFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnInfoMedica;
+<<<<<<< HEAD
+=======
+    private javax.swing.JButton btnOrigen;
+>>>>>>> main
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable tablaEstudiantes;
     // End of variables declaration//GEN-END:variables
 }

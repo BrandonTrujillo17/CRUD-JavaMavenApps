@@ -18,11 +18,16 @@ public class DAOEstudiante {
         ArrayList<Estudiante> estudiantes = new ArrayList<>();
         try{
             Connection conn = Conexion.Conectar();
+<<<<<<< HEAD
             String consulta = "Select e.*, c.nombre_colegio from Estudiante e INNER JOIN colegio c on e.idcolegio = c.idcolegio where estado = 't';";
+=======
+            String consulta = "Select * from Estudiante where estado = 't';";
+>>>>>>> main
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery(consulta);
             while(rs.next()){
                 Estudiante estudiantesObtenidos = new Estudiante();
+<<<<<<< HEAD
                 estudiantesObtenidos.setIdEstudiante(rs.getString("idestudiante"));
                 estudiantesObtenidos.setPrimerNombre(rs.getString("primer_nom"));
                 estudiantesObtenidos.setSegundoNombre(rs.getString("seg_nom"));
@@ -31,6 +36,14 @@ public class DAOEstudiante {
                 estudiantesObtenidos.setActivo(rs.getBoolean("estado"));
                 estudiantesObtenidos.setClaveColegio(rs.getString("idcolegio"));
                 estudiantesObtenidos.setNombreColegio(rs.getString("nombre_colegio"));
+=======
+                estudiantesObtenidos.setIdEstudiante(rs.getString(1));
+                estudiantesObtenidos.setPrimerNombre(rs.getString(2));
+                estudiantesObtenidos.setSegundoNombre(rs.getString(4));
+                estudiantesObtenidos.setPrimerApellido(rs.getString(3));
+                estudiantesObtenidos.setSegundoApellido(rs.getString(5));
+                estudiantesObtenidos.setActivo(rs.getBoolean(6));
+>>>>>>> main
                 estudiantes.add(estudiantesObtenidos);
             }
             conn.close();
@@ -67,8 +80,13 @@ public class DAOEstudiante {
         int resultado = 0;
         try{
             Connection conn = Conexion.Conectar();
+<<<<<<< HEAD
             PreparedStatement consulta = conn.prepareStatement("INSERT INTO Estudiante (idestudiante, primer_nom, primer_ape, seg_nom, seg_ape, estado, idcolegio) "
                     + "VALUES (?, ?, ?, ?, ?, 't', ?);");
+=======
+            PreparedStatement consulta = conn.prepareStatement("INSERT INTO Estudiante (idestudiante, primer_nom, seg_nom, primer_ape, seg_ape, estado) "
+                    + "VALUES (?, ?, ?, ?, ?, 't');");
+>>>>>>> main
             consulta.setString(1, matricula);
             consulta.setString(2, primerNombre);
             consulta.setString(3, primerApellido);

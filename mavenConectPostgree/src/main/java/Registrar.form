@@ -42,11 +42,19 @@
                   <Component id="txtSegundoNombre" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtSegundoApellido" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtPrimerNombre" max="32767" attributes="0"/>
+<<<<<<< HEAD
                   <Component id="txtMatricula" alignment="1" max="32767" attributes="0"/>
+=======
+>>>>>>> main
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="btnCancelar" min="-2" pref="109" max="-2" attributes="0"/>
+<<<<<<< HEAD
+=======
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="lbMensaje" min="-2" max="-2" attributes="0"/>
+>>>>>>> main
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnRegistrar_Editar" min="-2" pref="109" max="-2" attributes="0"/>
                           </Group>
@@ -54,11 +62,15 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btn_nuevoColegio" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="lbMensaje" min="-2" pref="266" max="-2" attributes="0"/>
+=======
+>>>>>>> main
                   </Group>
+                  <Component id="txtMatricula" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
           </Group>
@@ -98,6 +110,7 @@
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtSegundoApellido" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+<<<<<<< HEAD
               <EmptySpace max="32767" attributes="0"/>
               <Component id="lbMensaje" min="-2" pref="26" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -107,9 +120,26 @@
                   <Component id="btn_nuevoColegio" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+=======
+              <EmptySpace pref="40" max="32767" attributes="0"/>
+>>>>>>> main
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnRegistrar_Editar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbColegios" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_nuevoColegio" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="lbMensaje" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnRegistrar_Editar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
           </Group>
@@ -246,9 +276,12 @@
           </StringArray>
         </Property>
       </Properties>
+<<<<<<< HEAD
       <Events>
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbColegiosItemStateChanged"/>
       </Events>
+=======
+>>>>>>> main
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
