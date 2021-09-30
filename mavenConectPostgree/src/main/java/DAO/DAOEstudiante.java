@@ -120,4 +120,47 @@ public class DAOEstudiante {
         } 
         return resultado;
     }
+    
+    public static ArrayList<Estudiante> obtenerEstudiantesConHistorial(){
+        ArrayList<Estudiante> estudiantes = new ArrayList<>();
+        try{
+            Connection conn = Conexion.Conectar();
+            String consulta = "Select e.idestudiante, CONCAT(e.primer_nom, ' ', e.primer_ape) as nombre from estudiante e where not EXISTS "
+                    + "(select * from historia_academica h where h.estudiante_idestudiante = e.idestudiante);";
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(consulta);
+            while(rs.next()){
+                Estudiante estudiantesObtenidos = new Estudiante();
+                estudiantesObtenidos.setIdEstudiante(rs.getString("idestudiante"));
+                estudiantesObtenidos.setPrimerNombre(rs.getString("nombre"));
+                estudiantes.add(estudiantesObtenidos);
+            }
+            conn.close();
+            stm.close();
+            rs.close();
+        }catch(SQLException ex){
+            System.out.println("Error: " + ex.getMessage());
+        }
+        return estudiantes;
+    }
+    
+    public static String ObtenerEstudianteSeleccionado(String nombreEstudiante){
+        String idEstudiante = "";
+        try{
+            Connection conn = Conexion.Conectar();
+            PreparedStatement consulta = conn.prepareStatement("select * from estudiante where concat(primer_nom, ' ', primer_ape) = ?;");
+            consulta.setString(1, nombreEstudiante);
+            ResultSet rs = consulta.executeQuery();
+            if(rs.next()){
+                idEstudiante= rs.getString("idestudiante");
+            }
+            conn.close();
+            consulta.close();
+            rs.close();
+        }catch(SQLException ex){
+            System.out.println("Error: " + ex.getMessage());
+            
+        }
+        return idEstudiante;
+    }
 }

@@ -47,6 +47,11 @@ public class Principal extends javax.swing.JFrame {
         btn_gestionHistorialAcademico.setBackground(new java.awt.Color(51, 153, 255));
         btn_gestionHistorialAcademico.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_gestionHistorialAcademico.setText("Gestionar Historial Académico");
+        btn_gestionHistorialAcademico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_gestionHistorialAcademicoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,6 +87,12 @@ public class Principal extends javax.swing.JFrame {
         crud.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn_gestionEstudiantesActionPerformed
+
+    private void btn_gestionHistorialAcademicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gestionHistorialAcademicoActionPerformed
+        gestionDeHistorialAcademico historial = new gestionDeHistorialAcademico();
+        historial.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_gestionHistorialAcademicoActionPerformed
 
     /**
      * @param args the command line arguments
