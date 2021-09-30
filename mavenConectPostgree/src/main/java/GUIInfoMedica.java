@@ -1,11 +1,8 @@
 
-<<<<<<< HEAD
-=======
 import DAO.DAOInfoSalud;
 import pocos.InfoSalud;
 
 
->>>>>>> main
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,27 +11,22 @@ import pocos.InfoSalud;
  */
 
 /**
- *
+ *Clase GUI para la visualización de la información medica del estudiante seleccionado
  * @author josuecg
  */
-<<<<<<< HEAD
-public class GUIInfoMedica extends javax.swing.JFrame {
-
-    /**
-     * Creates new form GUIInfoMedica
-     */
-    public GUIInfoMedica() {
-        initComponents();
-=======
 public final class GUIInfoMedica extends javax.swing.JFrame {
     DAOInfoSalud daoInfoSalud = new DAOInfoSalud();
     InfoSalud infoSalud = null;
-    
+    int ejemplo;
     public GUIInfoMedica() {
         initComponents();
         cargarDatosSalud(CRUD.estudianteObtenido.getIdEstudiante());
     }
     
+    /***
+     * Este metodo carga la información de salud en los campos de la GUI
+     * @param matricula La matricula es usada para buscar la información de salud del estudiante seleccionado
+     */
     public void cargarDatosSalud(String matricula){
         infoSalud = daoInfoSalud.returnDatosSalud(matricula);
         if(CRUD.estudianteObtenido.getSegundoNombre().equals("*No existe*")){
@@ -61,7 +53,6 @@ public final class GUIInfoMedica extends javax.swing.JFrame {
             this.lbPeso.setText(infoSalud.getPeso());
         }
         
->>>>>>> main
     }
 
     /**
@@ -84,8 +75,6 @@ public final class GUIInfoMedica extends javax.swing.JFrame {
         lbNumeroSeguro = new javax.swing.JLabel();
         lbTipoSeguro = new javax.swing.JLabel();
         lbTipoSanguineo = new javax.swing.JLabel();
-<<<<<<< HEAD
-=======
         jLabel6 = new javax.swing.JLabel();
         lbDiscapacidadVisual = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -96,25 +85,10 @@ public final class GUIInfoMedica extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         lbPeso = new javax.swing.JLabel();
         lbEstatura = new javax.swing.JLabel();
->>>>>>> main
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-<<<<<<< HEAD
-        jLabel1.setText("INFORMACIÓN MEDICA DEL ESTUDIANTE");
-
-        jLabel2.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
-        jLabel2.setText("Nombre del estudiante:");
-
-        jLabel3.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
-        jLabel3.setText("Numero de seguro:");
-
-        jLabel4.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
-        jLabel4.setText("Tipo de seguro:");
-
-        jLabel5.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
-=======
         jLabel1.setText("INFORMACIÓN MEDICA");
 
         jLabel2.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
@@ -127,20 +101,16 @@ public final class GUIInfoMedica extends javax.swing.JFrame {
         jLabel4.setText("Tipo de seguro:");
 
         jLabel5.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
->>>>>>> main
         jLabel5.setText("Grupo sanguineo:");
 
         btnModificar.setBackground(new java.awt.Color(255, 204, 0));
         btnModificar.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnModificar.setText("Modificar datos");
-<<<<<<< HEAD
-=======
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
             }
         });
->>>>>>> main
 
         btnRegresar.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnRegresar.setText("Regresar");
@@ -150,16 +120,6 @@ public final class GUIInfoMedica extends javax.swing.JFrame {
             }
         });
 
-<<<<<<< HEAD
-        lbNombreEstudiante.setText("<nombre_estudiante>");
-
-        lbNumeroSeguro.setText("<numero_seguro>");
-
-        lbTipoSeguro.setText("<tipo_seguro>");
-
-        lbTipoSanguineo.setText("<grupo_sanguineo>");
-
-=======
         lbNombreEstudiante.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         lbNombreEstudiante.setText("<nombre_estudiante>");
 
@@ -202,40 +162,11 @@ public final class GUIInfoMedica extends javax.swing.JFrame {
         lbEstatura.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         lbEstatura.setText("<estatura>");
 
->>>>>>> main
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-<<<<<<< HEAD
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnRegresar)
-                                .addComponent(jLabel3)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnModificar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbNombreEstudiante)
-                                    .addComponent(lbNumeroSeguro)
-                                    .addComponent(lbTipoSeguro)
-                                    .addComponent(lbTipoSanguineo))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 71, Short.MAX_VALUE)
-                        .addComponent(jLabel1)))
-                .addGap(73, 73, 73))
-=======
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
@@ -271,21 +202,10 @@ public final class GUIInfoMedica extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnModificar)))
                 .addContainerGap(33, Short.MAX_VALUE))
->>>>>>> main
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-<<<<<<< HEAD
-                .addGap(15, 15, 15)
-                .addComponent(jLabel1)
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lbNombreEstudiante))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-=======
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
                 .addGap(30, 30, 30)
@@ -302,7 +222,6 @@ public final class GUIInfoMedica extends javax.swing.JFrame {
                     .addComponent(lbEstatura))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
->>>>>>> main
                     .addComponent(jLabel3)
                     .addComponent(lbNumeroSeguro))
                 .addGap(18, 18, 18)
@@ -313,9 +232,6 @@ public final class GUIInfoMedica extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(lbTipoSanguineo))
-<<<<<<< HEAD
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-=======
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -329,7 +245,6 @@ public final class GUIInfoMedica extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(lbHipertención))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
->>>>>>> main
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnModificar)
                     .addComponent(btnRegresar))
@@ -345,15 +260,12 @@ public final class GUIInfoMedica extends javax.swing.JFrame {
        this.setVisible(false);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-<<<<<<< HEAD
-=======
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
        GUIModificarInfMedica modInfMed = new GUIModificarInfMedica(infoSalud);
        modInfMed.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_btnModificarActionPerformed
 
->>>>>>> main
     /**
      * @param args the command line arguments
      */
@@ -393,20 +305,13 @@ public final class GUIInfoMedica extends javax.swing.JFrame {
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;
-<<<<<<< HEAD
-=======
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
->>>>>>> main
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-<<<<<<< HEAD
-    private javax.swing.JLabel lbNombreEstudiante;
-    private javax.swing.JLabel lbNumeroSeguro;
-=======
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lbDiabetes;
@@ -416,7 +321,6 @@ public final class GUIInfoMedica extends javax.swing.JFrame {
     private javax.swing.JLabel lbNombreEstudiante;
     private javax.swing.JLabel lbNumeroSeguro;
     private javax.swing.JLabel lbPeso;
->>>>>>> main
     private javax.swing.JLabel lbTipoSanguineo;
     private javax.swing.JLabel lbTipoSeguro;
     // End of variables declaration//GEN-END:variables
