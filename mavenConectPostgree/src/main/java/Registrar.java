@@ -23,6 +23,9 @@ public class Registrar extends javax.swing.JFrame {
     boolean esEdicion = false;
     Estudiante editarEstudiante = CRUD.estudianteObtenido;
     
+    /**
+     * método que verifica si se desea editar o registrar un estudiante, esto porque la misma ventana se usa para ambos fines
+     */
     private void verificarAccion(){
         if(CRUD.botonPresionado.equalsIgnoreCase("editar")){
             esEdicion = true;
@@ -33,6 +36,9 @@ public class Registrar extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * este método llena los campos de edición en caso de que la acción a realizar sea editar
+     */
     void llenarCampos(){
         txtMatricula.setText(editarEstudiante.getIdEstudiante());
         txtMatricula.setEditable(false);
@@ -42,6 +48,9 @@ public class Registrar extends javax.swing.JFrame {
         txtSegundoApellido.setText(editarEstudiante.getSegundoApellido());
     }
     
+    /**
+     * este método llena el combo box de colegios (tanto para editar como para registrar)
+     */
     void llenarCombo(){
         cbColegios.removeAllItems();
         ArrayList<Colegio> colegios = DAOColegio.ObtenerColegios();
@@ -50,6 +59,9 @@ public class Registrar extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * método que selecciona por defecto la opción del combo box que está guardada (para editar)
+     */
     void seleccionarOpcionDeComboParaEditar(){
         int sizeCombo = cbColegios.getItemCount();
         int contador = 0;

@@ -14,6 +14,10 @@ import pocos.Estudiante;
 
 
 public class DAOEstudiante {
+    /**
+     * método para obtener los estudiantes que esten activos
+     * @return un array list de estudiantes
+     */
     public static ArrayList<Estudiante> ObtenerEstudiantes(){
         ArrayList<Estudiante> estudiantes = new ArrayList<>();
         try{
@@ -47,6 +51,11 @@ public class DAOEstudiante {
     return estudiantes;
     }
     
+    /**
+     * método que verifica si una matricula ya esta registrada
+     * @param matricula
+     * @return un boolean que dice si es repetida o no
+     */
     public static boolean verificarMatriculaRepetida(String matricula){
         boolean esRepetida = false;
         try{
@@ -66,6 +75,16 @@ public class DAOEstudiante {
         return esRepetida;
     }
     
+    /**
+     * metodo que inserta estudiantes a la tabla estudiante
+     * @param matricula
+     * @param primerNombre
+     * @param segundoNombre
+     * @param primerApellido
+     * @param segundoApellido
+     * @param claveColegio
+     * @return una variable int con el número de rows afectadas tras el registro
+     */
     public static int registrarEstudiante (String matricula, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String claveColegio){
         int resultado = 0;
         try{
@@ -88,6 +107,17 @@ public class DAOEstudiante {
         return resultado;
     }
     
+    /**
+     * método que edita estudiantes
+     * @param matricula
+     * @param primerNombre
+     * @param segundoNombre
+     * @param primerApellido
+     * @param segundoApellido
+     * @param claveColegio
+     * @param idEstudianteComparacion
+     * @return una variable int con el número de rows afectadas tras la edición
+     */
     public static int editarEstudiante (String matricula, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String claveColegio, String idEstudianteComparacion){
         int resultado = 0;
         try{
@@ -110,11 +140,16 @@ public class DAOEstudiante {
         return resultado;
     }
     
+    /**
+     * método que cambia de estado a un estudiante
+     * @param matricula
+     * @return una variable int con el número de rows afectadas tras el cambio
+     */
     public static int eliminarEstudiante (String matricula){
         int resultado = 0;
         try{
             Connection conn = Conexion.Conectar();
-            PreparedStatement consulta = conn.prepareStatement("Update Estudiante set activo = 'f' where idEstudiante = ?;");
+            PreparedStatement consulta = conn.prepareStatement("Update Estudiante set estado = 'f' where idEstudiante = ?;");
             consulta.setString(1, matricula);
             resultado = consulta.executeUpdate();
             conn.close();
@@ -125,6 +160,10 @@ public class DAOEstudiante {
         return resultado;
     }
     
+    /**
+     * método que obtiene a los estudiantes que no tiene historial academico asociado, usado para llenar el combo box que aparece en registrar historial
+     * @return  arrayList de estudiantes
+     */
     public static ArrayList<Estudiante> obtenerEstudiantesConHistorial(){
         ArrayList<Estudiante> estudiantes = new ArrayList<>();
         try{
@@ -148,6 +187,11 @@ public class DAOEstudiante {
         return estudiantes;
     }
     
+    /**
+     * metodo que obtiene el estudiante que se seleccionó de un combo Box
+     * @param nombreEstudiante
+     * @return String con el ID del estudiante
+     */
     public static String ObtenerEstudianteSeleccionado(String nombreEstudiante){
         String idEstudiante = "";
         try{

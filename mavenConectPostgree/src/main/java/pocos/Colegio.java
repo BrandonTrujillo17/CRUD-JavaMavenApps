@@ -4,7 +4,7 @@ package pocos;
 /**
  *
  * @author Brandon Trujillo
- * @fecha 28/09/2021
+ * Clase colegio
  *
  */
 public class Colegio {

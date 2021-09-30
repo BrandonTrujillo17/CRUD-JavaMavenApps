@@ -1,0 +1,116 @@
+@options
+@packages
+@argfile
+-classpath
+'C:/Users/brand/.m2/repository/org/postgresql/postgresql/42.2.23/postgresql-42.2.23.jar'
+-encoding
+'UTF-8'
+-protected
+-source
+'1.8'
+-sourcepath
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2021. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'mavenConectPostgree 1.0-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/javase/8/docs/api' 'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'mavenConectPostgree 1.0-SNAPSHOT API'
+DAO
+pocos
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/CRUD.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/DAO/Conexion.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/DAO/DAOColegio.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/DAO/DAOEstudiante.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/DAO/DAOHistoriaAcademica.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/DAO/DAOInfoSalud.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/DAO/DAOOrigen.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/DAO/DAOTutor.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/gestionColegios.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/gestionDeHistorialAcademico.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/GestionTutor.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/GUIInfoMedica.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/GUIModificarInfMedica.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/GUIOrigen.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/Interfaz.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/pocos/Colegio.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/pocos/Estudiante.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/pocos/HistoriaAcademica.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/pocos/InfoSalud.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/pocos/Origen.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/pocos/Tutor.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/Principal.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/Registrar.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/registrarColegio.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/registrarHistorial.java'
+'C:/Users/brand/Documents/UVDocs/7mosemestre/DesarrolloDeApps/JavaMaven/CRUD-JavaMavenApps/mavenConectPostgree/src/main/java/RegistrarYModificarTutor.java'
+C:\Users\brand\.m2\repository\org\postgresql\postgresql\42.2.23\postgresql-42.2.23.jar = 1632274550401
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\CRUD.form = 1632983327738
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\CRUD.java = 1632983327808
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\gestionColegios.form = 1632972228916
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\gestionColegios.java = 1632972228917
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\gestionDeHistorialAcademico.form = 1632972284356
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\gestionDeHistorialAcademico.java = 1632972284358
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\GestionTutor.form = 1632982609774
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\GestionTutor.java = 1632982609819
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\GUIInfoMedica.form = 1632982432481
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\GUIInfoMedica.java = 1632982432523
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\GUIModificarInfMedica.form = 1632974963336
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\GUIModificarInfMedica.java = 1632982281329
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\GUIOrigen.form = 1632972228913
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\GUIOrigen.java = 1632972228914
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\Interfaz.form = 1632971203341
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\Interfaz.java = 1632971203339
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\Principal.form = 1632982548055
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\Principal.java = 1632982548120
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\Registrar.form = 1632983811524
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\Registrar.java = 1632983811587
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\registrarColegio.form = 1632975451975
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\registrarColegio.java = 1632975452011
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\registrarHistorial.form = 1632972284366
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\registrarHistorial.java = 1632972284368
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\RegistrarYModificarTutor.form = 1632982628333
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java\RegistrarYModificarTutor.java = 1632982628384
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\src\main\java = 1632982627817
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\allclasses-frame.html = 1632984843784
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\allclasses-noframe.html = 1632984843788
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\constant-values.html = 1632984843382
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\CRUD.html = 1632984841129
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\deprecated-list.html = 1632984843781
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\gestionColegios.html = 1632984841340
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\gestionDeHistorialAcademico.html = 1632984841527
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\GestionTutor.html = 1632984841675
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\GUIInfoMedica.html = 1632984841859
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\GUIModificarInfMedica.html = 1632984842047
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\GUIOrigen.html = 1632984842184
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\help-doc.html = 1632984843811
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\index-all.html = 1632984843776
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\index.html = 1632984843791
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\Interfaz.html = 1632984842321
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\overview-frame.html = 1632984843290
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\overview-summary.html = 1632984843805
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\overview-tree.html = 1632984843746
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\package-frame.html = 1632984843294
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\package-list = 1632984843286
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\package-summary.html = 1632984843320
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\package-tree.html = 1632984843326
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\package-use.html = 1632984843702
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\Principal.html = 1632984842495
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\Registrar.html = 1632984842633
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\registrarColegio.html = 1632984842780
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\registrarHistorial.html = 1632984842919
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\RegistrarYModificarTutor.html = 1632984843053
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\script.js = 1632984843814
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\serialized-form.html = 1632984843422
+C:\Users\brand\Documents\UVDocs\7mosemestre\DesarrolloDeApps\JavaMaven\CRUD-JavaMavenApps\mavenConectPostgree\target\site\apidocs\stylesheet.css = 1632982281543

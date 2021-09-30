@@ -8,15 +8,10 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import pocos.Estudiante;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
- * @author brand
+ * @author Brandon Trujillo
  */
 public class CRUD extends javax.swing.JFrame {
 
@@ -28,6 +23,9 @@ public class CRUD extends javax.swing.JFrame {
     public static String botonPresionado = "";
     public static Estudiante estudianteObtenido = new Estudiante();
     
+    /**
+     * método que llena la tabla del crud
+     */
     private void llenarTabla(){
         DefaultTableModel modelo = new DefaultTableModel();
         ArrayList<Object>headEstudiante = new ArrayList<>();
@@ -58,6 +56,9 @@ public class CRUD extends javax.swing.JFrame {
         this.tablaEstudiantes.setModel(modelo);
     }
     
+    /**
+     * método para obtener el estudiante seleccionado en caso de que se desee editar
+     */
     boolean haySeleccion = false;
     public void obtenerSeleccion(){
         int seleccion = tablaEstudiantes.getSelectedRow();
@@ -264,6 +265,9 @@ public class CRUD extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_btnOrigenActionPerformed
 
+    /**
+     * método para cambiar de estado a un estudiante (No se elimina por completo, solo se inactiva, esto para tener un registro historico)
+     */
     private void eliminarEstudiante(){
         obtenerSeleccion();
         if(haySeleccion){
