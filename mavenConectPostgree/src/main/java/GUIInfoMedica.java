@@ -23,6 +23,11 @@ public final class GUIInfoMedica extends javax.swing.JFrame {
         cargarDatosSalud(CRUD.estudianteObtenido.getIdEstudiante());
     }
     
+    /*
+     * Este metodo carga dentro de los campos la información de salud de los estudiantes seleccionados
+     * 
+     * @param matricula la matricula del estudiante seleccionado 
+     */
     public void cargarDatosSalud(String matricula){
         infoSalud = daoInfoSalud.returnDatosSalud(matricula);
         if(CRUD.estudianteObtenido.getSegundoNombre().equals("*No existe*")){
