@@ -2,10 +2,9 @@
 import DAO.DAOColegio;
 import DAO.DAOEstudiante;
 import java.awt.TrayIcon;
-<<<<<<< HEAD
+
 import java.awt.event.ItemEvent;
-=======
->>>>>>> main
+
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -22,12 +21,10 @@ public class Registrar extends javax.swing.JFrame {
         llenarCombo();
     }
     
-<<<<<<< HEAD
+
     String claveColegio = "";
     String nombreColegio = "";
-=======
 
->>>>>>> main
     boolean esEdicion = false;
     Estudiante editarEstudiante = CRUD.estudianteObtenido;
     
@@ -399,7 +396,7 @@ public class Registrar extends javax.swing.JFrame {
     }//GEN-LAST:event_cbColegiosItemStateChanged
 
 =======
-    }//GEN-LAST:event_btn_nuevoColegioActionPerformed
+    }                                                
 
 >>>>>>> main
     public void regresarCrud(){
