@@ -18,7 +18,7 @@ import pocos.Tutor;
 public class GestionTutor extends javax.swing.JFrame {
 
      private DefaultTableModel model;
-    ArrayList<Tutor> tutores = new ArrayList<Tutor>();
+     ArrayList<Tutor> tutores = new ArrayList<Tutor>();
     
     public GestionTutor() {
         initComponents();
@@ -127,23 +127,49 @@ public class GestionTutor extends javax.swing.JFrame {
     private void BtRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtRegistrarActionPerformed
         RegistrarYModificarTutor ventanaRegistrar = new RegistrarYModificarTutor(true);
         ventanaRegistrar.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BtRegistrarActionPerformed
 
     private void BtEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtEditarActionPerformed
-        // TODO add your handling code here:
+        int seleccion = TbTutores.getSelectedRow();
+        if(seleccion >= 0){
+            Tutor tutorEditar = tutores.get(seleccion);
+            RegistrarYModificarTutor ventanaRegistrar = new RegistrarYModificarTutor(false,tutorEditar);
+            ventanaRegistrar.setVisible(true);
+            this.dispose();      
+        }else{
+            mensaje("Para modificar debe seleccionar una fila");
+        }
     }//GEN-LAST:event_BtEditarActionPerformed
 
     private void BtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtEliminarActionPerformed
         int seleccion = TbTutores.getSelectedRow();
         if(seleccion >= 0){
+            Tutor tutorEliminar = tutores.get(seleccion);
             
+            int confirmacion = JOptionPane.showConfirmDialog(null, "¿Seguro que desea eliminar el tutor?", "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(confirmacion == JOptionPane.YES_OPTION){ 
+                int resultado;
+                resultado = DAOTutor.deleteTutor(tutorEliminar.getIdTutor());
+                if(resultado == 1){
+                    cargarTutores();
+                     mensaje("Se elimino exitosamente");
+                }else{
+                    mensaje("No se puedo hacer la eliminación");
+                }
+            }   
         }else{
-            mensaje("Para eliminar un debe seleccionar una fila");
+            mensaje("Para eliminar debe seleccionar una fila");
         }
     }//GEN-LAST:event_BtEliminarActionPerformed
 
     private void BtCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtCerrarActionPerformed
         // TODO add your handling code here:
+        
+        
+        Principal ventanaPrincipal = new Principal();
+        ventanaPrincipal.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BtCerrarActionPerformed
 
     /*

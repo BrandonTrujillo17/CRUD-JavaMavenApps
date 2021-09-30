@@ -1,4 +1,8 @@
 
+import DAO.DAOInfoSalud;
+import pocos.InfoSalud;
+
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -10,13 +14,41 @@
  *
  * @author josuecg
  */
-public class GUIInfoMedica extends javax.swing.JFrame {
-
-    /**
-     * Creates new form GUIInfoMedica
-     */
+public final class GUIInfoMedica extends javax.swing.JFrame {
+    DAOInfoSalud daoInfoSalud = new DAOInfoSalud();
+    InfoSalud infoSalud = null;
+    
     public GUIInfoMedica() {
         initComponents();
+        cargarDatosSalud(CRUD.estudianteObtenido.getIdEstudiante());
+    }
+    
+    public void cargarDatosSalud(String matricula){
+        infoSalud = daoInfoSalud.returnDatosSalud(matricula);
+        if(CRUD.estudianteObtenido.getSegundoNombre().equals("*No existe*")){
+            CRUD.estudianteObtenido.setSegundoNombre("");
+        }
+        this.lbNombreEstudiante.setText(CRUD.estudianteObtenido.getNombreCompleto());
+        if(infoSalud.getIdInfo()==0){
+            this.lbNumeroSeguro.setText("Información pendiente");
+            this.lbTipoSanguineo.setText("Información pendiente");
+            this.lbTipoSeguro.setText("Información pendiente");
+            this.lbDiabetes.setText("Información pendiente");
+            this.lbDiscapacidadVisual.setText("Información pendiente");
+            this.lbEstatura.setText("Información pendiente");
+            this.lbHipertención.setText("Información pendiente");
+            this.lbPeso.setText("Información pendiente");
+        }else{
+            this.lbNumeroSeguro.setText(infoSalud.getNumeroSeguro());
+            this.lbTipoSanguineo.setText(infoSalud.getTipoSangre());
+            this.lbTipoSeguro.setText(infoSalud.getTipoSeguro());
+            this.lbDiabetes.setText(infoSalud.getDiabetes());
+            this.lbDiscapacidadVisual.setText(infoSalud.getDiscVisual());
+            this.lbEstatura.setText(infoSalud.getEstatura());
+            this.lbHipertención.setText(infoSalud.getHipertención());
+            this.lbPeso.setText(infoSalud.getPeso());
+        }
+        
     }
 
     /**
@@ -39,27 +71,42 @@ public class GUIInfoMedica extends javax.swing.JFrame {
         lbNumeroSeguro = new javax.swing.JLabel();
         lbTipoSeguro = new javax.swing.JLabel();
         lbTipoSanguineo = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        lbDiscapacidadVisual = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        lbDiabetes = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        lbHipertención = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        lbPeso = new javax.swing.JLabel();
+        lbEstatura = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel1.setText("INFORMACIÓN MEDICA DEL ESTUDIANTE");
+        jLabel1.setText("INFORMACIÓN MEDICA");
 
-        jLabel2.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
         jLabel2.setText("Nombre del estudiante:");
 
-        jLabel3.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
         jLabel3.setText("Numero de seguro:");
 
-        jLabel4.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
         jLabel4.setText("Tipo de seguro:");
 
-        jLabel5.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
         jLabel5.setText("Grupo sanguineo:");
 
         btnModificar.setBackground(new java.awt.Color(255, 204, 0));
         btnModificar.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnModificar.setText("Modificar datos");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnRegresar.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnRegresar.setText("Regresar");
@@ -69,56 +116,105 @@ public class GUIInfoMedica extends javax.swing.JFrame {
             }
         });
 
+        lbNombreEstudiante.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         lbNombreEstudiante.setText("<nombre_estudiante>");
 
+        lbNumeroSeguro.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         lbNumeroSeguro.setText("<numero_seguro>");
 
+        lbTipoSeguro.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         lbTipoSeguro.setText("<tipo_seguro>");
 
+        lbTipoSanguineo.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         lbTipoSanguineo.setText("<grupo_sanguineo>");
+
+        jLabel6.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        jLabel6.setText("Discapacidad visual:");
+
+        lbDiscapacidadVisual.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        lbDiscapacidadVisual.setText("<discapacidad_visua>");
+
+        jLabel8.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        jLabel8.setText("Diabetes:");
+
+        lbDiabetes.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        lbDiabetes.setText("<diabetes>");
+
+        jLabel10.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        jLabel10.setText("Hipertención:");
+
+        lbHipertención.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        lbHipertención.setText("<hipertencion>");
+
+        jLabel12.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        jLabel12.setText("Peso:");
+
+        jLabel13.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        jLabel13.setText("Estatura:");
+
+        lbPeso.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        lbPeso.setText("<peso>");
+
+        lbEstatura.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        lbEstatura.setText("<estatura>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnRegresar)
-                                .addComponent(jLabel3)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnModificar))
+                            .addComponent(btnModificar)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel12)
+                                        .addComponent(jLabel13))
+                                    .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbNombreEstudiante)
+                                    .addComponent(lbPeso)
+                                    .addComponent(lbEstatura)
                                     .addComponent(lbNumeroSeguro)
                                     .addComponent(lbTipoSeguro)
-                                    .addComponent(lbTipoSanguineo))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 71, Short.MAX_VALUE)
-                        .addComponent(jLabel1)))
-                .addGap(73, 73, 73))
+                                    .addComponent(lbTipoSanguineo)
+                                    .addComponent(lbDiscapacidadVisual)
+                                    .addComponent(lbDiabetes)
+                                    .addComponent(lbHipertención))))))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addGap(37, 37, 37)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(lbNombreEstudiante))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(lbPeso))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(lbEstatura))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(lbNumeroSeguro))
@@ -130,7 +226,19 @@ public class GUIInfoMedica extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(lbTipoSanguineo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(lbDiscapacidadVisual))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(lbDiabetes))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(lbHipertención))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnModificar)
                     .addComponent(btnRegresar))
@@ -145,6 +253,12 @@ public class GUIInfoMedica extends javax.swing.JFrame {
        backMain.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+       GUIModificarInfMedica modInfMed = new GUIModificarInfMedica(infoSalud);
+       modInfMed.setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,12 +299,22 @@ public class GUIInfoMedica extends javax.swing.JFrame {
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lbDiabetes;
+    private javax.swing.JLabel lbDiscapacidadVisual;
+    private javax.swing.JLabel lbEstatura;
+    private javax.swing.JLabel lbHipertención;
     private javax.swing.JLabel lbNombreEstudiante;
     private javax.swing.JLabel lbNumeroSeguro;
+    private javax.swing.JLabel lbPeso;
     private javax.swing.JLabel lbTipoSanguineo;
     private javax.swing.JLabel lbTipoSeguro;
     // End of variables declaration//GEN-END:variables

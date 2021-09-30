@@ -66,14 +66,62 @@ public class DAOTutor {
     }
     
     /*
-    public static int setEstudiante(){
+    * Registro de los datos de tutor
+    */
+    public static int setTutor(String nombre, String apellidoMaterno, String apellidoPaterno, String direccion, 
+                               String numeroFijo,String NumeroCelular, String idEstudiante){
+        
         Connection conn = Conexion.Conectar();
         int resultado = 0;
         if(conn != null) {
             try {
-                String query = "";
+                String query = "INSERT INTO public.tutor( estudiante_idestudiante, nombre_tutor, "
+                             + "apellido_paterno, apellido_materno, direccion_tutor, fijo, celular)\n" +
+                               " VALUES (?, ?, ?, ?, ?, ?, ?);";
                 
                 PreparedStatement ps = conn.prepareStatement(query);
+                
+                ps.setString(1,idEstudiante);
+                ps.setString(2,nombre);
+                ps.setString(3,apellidoPaterno);
+                ps.setString(4,apellidoMaterno);
+                ps.setString(5,direccion);
+                ps.setString(6,numeroFijo);
+                ps.setString(7,NumeroCelular);
+                
+                resultado = ps.executeUpdate();
+                
+                conn.close();
+                
+            }catch(SQLException ex) {
+                System.out.println("SQLException: " + ex.getMessage());
+                System.out.println("SQLState: " + ex.getSQLState());
+                System.out.println("VendorError: " + ex.getErrorCode());
+                JOptionPane.showMessageDialog(null, "Error al intentar conectar con la base de datos");
+            }finally{
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return resultado;
+    }    
+
+    /*
+    * Eliminación de tutor
+    */
+    public static int deleteTutor(int idTutor){
+        Connection conn = Conexion.Conectar();
+        int resultado = 0;
+        if(conn != null) {
+            try {
+                String query = "DELETE FROM public.tutor WHERE idtutor = ?;";
+                
+                PreparedStatement ps = conn.prepareStatement(query);
+                
+                ps.setInt(1,idTutor);
                 
                 resultado = ps.executeUpdate();
                 
@@ -93,6 +141,54 @@ public class DAOTutor {
         }
         return resultado;
     }
+    
+    /*
+    * Actualización de los datos de tutor
     */
+    public static int updateTutor(String nombre, String apellidoMaterno, String apellidoPaterno,
+                                  String direccion, String numeroFijo,String NumeroCelular, 
+                                  String idEstudiante, int idTutor){
+
+        Connection conn = Conexion.Conectar();
+
+        int resultado = 0;
+
+        if(conn != null) {
+            try {
+                String query = "UPDATE public.tutor SET estudiante_idestudiante=?, nombre_tutor=?, "
+                             + "apellido_paterno=?, apellido_materno=?, direccion_tutor=?, fijo=?, celular=?\n"
+                             + "WHERE idtutor = ?;";
+                
+                PreparedStatement ps = conn.prepareStatement(query);
+                
+                ps.setString(1,idEstudiante);
+                ps.setString(2,nombre);
+                ps.setString(3,apellidoPaterno);
+                ps.setString(4,apellidoMaterno);
+                ps.setString(5,direccion);
+                ps.setString(6,numeroFijo);
+                ps.setString(7,NumeroCelular);
+                ps.setInt(8,idTutor);
+
+                resultado = ps.executeUpdate();
+                
+                conn.close();
+                
+            }catch(SQLException ex) {
+                System.out.println("SQLException: " + ex.getMessage());
+                System.out.println("SQLState: " + ex.getSQLState());
+                System.out.println("VendorError: " + ex.getErrorCode());
+                JOptionPane.showMessageDialog(null, "Error al intentar conectar con la base de datos");
+            }finally{
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return resultado;
+    }
+    
     
 }

@@ -1,6 +1,11 @@
 
+import DAO.DAOEstudiante;
+import DAO.DAOTutor;
+import java.awt.event.ItemEvent;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import pocos.Estudiante;
+import pocos.Tutor;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -16,7 +21,9 @@ public class RegistrarYModificarTutor extends javax.swing.JFrame {
     /**
      * Creates new form RegistrarYModificarTutor
      */
-    ArrayList<Estudiante> estudiantes = new ArrayList<>();
+    ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
+    Tutor tutorEditar;
+    
     boolean isNuevo;
     
     public RegistrarYModificarTutor() {
@@ -26,6 +33,14 @@ public class RegistrarYModificarTutor extends javax.swing.JFrame {
     public RegistrarYModificarTutor(boolean isNuevo) {
         initComponents();
         llenarComboBox();
+        this.isNuevo = isNuevo;
+    }
+    public RegistrarYModificarTutor(boolean isNuevo, Tutor tutorEditar) {
+        initComponents();
+        llenarComboBox();
+        this.tutorEditar = tutorEditar;
+        this.isNuevo = isNuevo;
+        cargarDatosTutor();
     }
 
     /**
@@ -37,37 +52,43 @@ public class RegistrarYModificarTutor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        LbTitulo = new javax.swing.JLabel();
+        BtGuardar = new javax.swing.JButton();
+        BtCancelar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        nombre = new javax.swing.JTextField();
-        apellidoPaterno = new javax.swing.JTextField();
-        apellidoMaterno = new javax.swing.JTextField();
-        direccion = new javax.swing.JTextField();
+        TfNombre = new javax.swing.JTextField();
+        TfApellidoPaterno = new javax.swing.JTextField();
+        TfApellidoMaterno = new javax.swing.JTextField();
+        TfDireccion = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        telefonoFijo = new javax.swing.JTextField();
-        telefonoCelular = new javax.swing.JTextField();
+        TfTelefonoFijo = new javax.swing.JTextField();
+        TfTelefonoCelular = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         CbEstudiante = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setText("Registrar Tutor");
+        LbTitulo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        LbTitulo.setText("Registrar Tutor");
 
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BtGuardar.setText("Guardar");
+        BtGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GuardarActionPerformed(evt);
+                BtGuardarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cancelar");
+        BtCancelar.setText("Cancelar");
+        BtCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtCancelarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Nombre: ");
 
@@ -90,15 +111,17 @@ public class RegistrarYModificarTutor extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                        .addGap(30, 30, 30)
+                        .addComponent(LbTitulo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(BtGuardar)
+                                .addGap(18, 18, 18)
+                                .addComponent(BtCancelar))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -112,83 +135,162 @@ public class RegistrarYModificarTutor extends javax.swing.JFrame {
                                                 .addComponent(jLabel3)))
                                         .addGap(18, 18, 18)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(nombre)
-                                    .addComponent(apellidoPaterno)
-                                    .addComponent(direccion, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(apellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(34, 34, 34)
+                                    .addComponent(TfNombre)
+                                    .addComponent(TfApellidoPaterno)
+                                    .addComponent(TfDireccion, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(TfApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(43, 43, 43)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel8))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(telefonoFijo)
-                                    .addComponent(telefonoCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                                    .addComponent(CbEstudiante, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addContainerGap(31, Short.MAX_VALUE))))
+                                    .addComponent(TfTelefonoFijo)
+                                    .addComponent(TfTelefonoCelular)
+                                    .addComponent(CbEstudiante, 0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jLabel1)
+                .addComponent(LbTitulo)
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(apellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TfApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(telefonoFijo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TfTelefonoFijo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(telefonoCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(TfTelefonoCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(apellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TfApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel8)
                     .addComponent(CbEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TfDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addGap(27, 27, 27))
+                    .addComponent(BtCancelar)
+                    .addComponent(BtGuardar))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    /*
-    private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
-        if(isNuevo){
-            String
+
+    private void BtGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGuardarActionPerformed
+
+        String nombre = TfNombre.getText();
+        String apellidoPaterno = TfApellidoPaterno.getText();
+        String apellidoMaterno = TfApellidoMaterno.getText();
+        String direccion = TfDireccion.getText();
+        String telefonoFijo = TfTelefonoFijo.getText();
+        String telefonoCelular = TfTelefonoCelular.getText();
+        String idEstudiante = "";
+        for(Estudiante estudiante:estudiantes){
             
-        }else {
-        
+            if(estudiante.getNombreCompleto().equals(CbEstudiante.getSelectedItem())){
+                idEstudiante = estudiante.getIdEstudiante();
+            }
         }
-    }//GEN-LAST:event_GuardarActionPerformed
-        */
-    
-    public void llenarComboBox(){
-        
-        CbEstudiante.removeAllItems();
-        for (int i = 0; i < estudiantes.size(); i++){
-            CbEstudiante.addItem("L");
-        }
+
+        if(nombre.equals("")){
+            mensaje("Falta de completar el campo Nombre");
+        }else if(apellidoPaterno.equals("") && apellidoMaterno.equals("")){
+            mensaje("Debe completar alguno de los campos Apellido Paterno o Apellido Materno");
+        }else if(direccion.equals("")){
+            mensaje("Falta de completar el campo Direccion");
+        } else if(telefonoFijo.equals("") && telefonoCelular.equals("")){
+            mensaje("Debe completar alguno de los campos Telefono Fijo o Telefono Celular");
+        }else{
+            if(isNuevo){
+                int resultado;
+                resultado = DAOTutor.setTutor(nombre, apellidoMaterno, apellidoPaterno, direccion, telefonoFijo, 
+                                          telefonoCelular, idEstudiante);
+                if(resultado == 1){
+                     mensaje("Se hizo el registro exitosamente");
+                }else{
+                    mensaje("No se puedo realizar el registro");
+                }
+                GestionTutor ventanaTutor = new GestionTutor();
+                ventanaTutor.setVisible(true);
+                this.dispose();
+            }else{
+                int resultado;
+                resultado = DAOTutor.updateTutor(nombre, apellidoMaterno, apellidoPaterno, direccion, 
+                                                 telefonoFijo, telefonoCelular, idEstudiante, tutorEditar.getIdTutor());
                 
+                if(resultado == 1){
+                     mensaje("Se hizo la actualización exitosamente");
+                }else{
+                    mensaje("No se puedo realizar la actualización");
+                }
+                GestionTutor ventanaTutor = new GestionTutor();
+                ventanaTutor.setVisible(true);
+                this.dispose();
+                
+                
+            }
+        }        
+    }//GEN-LAST:event_BtGuardarActionPerformed
+
+    private void BtCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtCancelarActionPerformed
+        GestionTutor ventanaTutor = new GestionTutor();
+        ventanaTutor.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BtCancelarActionPerformed
+
+    /*
+    * Recupera los nombres de los estudiantes
+    */
+    public void llenarComboBox(){
+        estudiantes = DAOEstudiante.ObtenerEstudiantes();
+        CbEstudiante.removeAllItems();
+        
+        for(Estudiante estudiante:estudiantes){
+            
+            CbEstudiante.addItem(estudiante.getNombreCompleto());
+        }   
+    }
+    
+    private void mensaje(String mensaje){
+        
+        JOptionPane.showMessageDialog(null, mensaje);
+    }
+    
+    public void cargarDatosTutor(){
+        
+        LbTitulo.setText("Editar Tutor" );
+        TfNombre.setText(tutorEditar.getNombre());
+        TfApellidoPaterno.setText(tutorEditar.getApellidoPaterno());
+        TfApellidoMaterno.setText(tutorEditar.getApellidoMaterno());
+        TfDireccion.setText(tutorEditar.getDirección());
+        TfTelefonoFijo.setText(tutorEditar.getNumeroFijo());
+        TfTelefonoCelular.setText(tutorEditar.getNumeroCelular());
+        
+        for(Estudiante estudiante:estudiantes){
+            
+            if(estudiante.getIdEstudiante().equals(tutorEditar.getIdEstudiante())){
+                CbEstudiante.setSelectedItem(estudiante.getNombreCompleto());
+            }
+        }
+  
     }
     
     /**
@@ -227,13 +329,16 @@ public class RegistrarYModificarTutor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtCancelar;
+    private javax.swing.JButton BtGuardar;
     private javax.swing.JComboBox<String> CbEstudiante;
-    private javax.swing.JTextField apellidoMaterno;
-    private javax.swing.JTextField apellidoPaterno;
-    private javax.swing.JTextField direccion;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel LbTitulo;
+    private javax.swing.JTextField TfApellidoMaterno;
+    private javax.swing.JTextField TfApellidoPaterno;
+    private javax.swing.JTextField TfDireccion;
+    private javax.swing.JTextField TfNombre;
+    private javax.swing.JTextField TfTelefonoCelular;
+    private javax.swing.JTextField TfTelefonoFijo;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -241,8 +346,5 @@ public class RegistrarYModificarTutor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField nombre;
-    private javax.swing.JTextField telefonoCelular;
-    private javax.swing.JTextField telefonoFijo;
     // End of variables declaration//GEN-END:variables
 }
