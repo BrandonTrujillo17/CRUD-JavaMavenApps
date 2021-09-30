@@ -11,7 +11,7 @@ import pocos.InfoSalud;
  */
 
 /**
- *
+ *Clase GUI para la visualización de la información medica del estudiante seleccionado
  * @author josuecg
  */
 public final class GUIInfoMedica extends javax.swing.JFrame {
@@ -23,10 +23,9 @@ public final class GUIInfoMedica extends javax.swing.JFrame {
         cargarDatosSalud(CRUD.estudianteObtenido.getIdEstudiante());
     }
     
-    /*
-     * Este metodo carga dentro de los campos la información de salud de los estudiantes seleccionados
-     * 
-     * @param matricula la matricula del estudiante seleccionado 
+    /***
+     * Este metodo carga la información de salud en los campos de la GUI
+     * @param matricula La matricula es usada para buscar la información de salud del estudiante seleccionado
      */
     public void cargarDatosSalud(String matricula){
         infoSalud = daoInfoSalud.returnDatosSalud(matricula);

@@ -11,8 +11,16 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import pocos.Estudiante;
 
-
+/***
+ * Esta clase permite el acceso de información de Estudiante
+ * @author josuecg
+ */
 public class DAOEstudiante {
+    
+    /***
+     * Este metodo permite obtener todos los estudiantes registrados dentro del sistema
+     * @return una lista de estudiantes registrados
+     */
     public static ArrayList<Estudiante> ObtenerEstudiantes(){
         ArrayList<Estudiante> estudiantes = new ArrayList<>();
         try{
@@ -41,6 +49,11 @@ public class DAOEstudiante {
     return estudiantes;
     }
     
+    /***
+     * Este metodo verifica si una matricula esta repetida dentro del sistema
+     * @param matricula La matricula a verificar
+     * @return true si esta repetida, false sino
+     */
     public static boolean verificarMatriculaRepetida(String matricula){
         boolean esRepetida = false;
         try{
@@ -60,6 +73,15 @@ public class DAOEstudiante {
         return esRepetida;
     }
     
+    /***
+     * Este método registra a un estudiante dentro del sistema
+     * @param matricula 
+     * @param primerNombre
+     * @param segundoNombre
+     * @param primerApellido
+     * @param segundoApellido
+     * @return 1 si el registro fue exitoso, 0 si no
+     */
     public static int registrarEstudiante (String matricula, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido){
         int resultado = 0;
         try{
@@ -80,6 +102,16 @@ public class DAOEstudiante {
         return resultado;
     }
     
+    /***
+     * Permite editar la información de un estudiante
+     * @param matricula
+     * @param primerNombre
+     * @param segundoNombre
+     * @param primerApellido
+     * @param segundoApellido
+     * @param idEstudianteComparacion
+     * @return 1 si el registro fue exitoso, 0 si no
+     */
     public static int editarEstudiante (String matricula, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String idEstudianteComparacion){
         int resultado = 0;
         try{
@@ -101,6 +133,11 @@ public class DAOEstudiante {
         return resultado;
     }
     
+    /***
+     * Permite eliminar o dar de baja a un estudiante dentro del sistema
+     * @param matricula sirve para identificar al estudiante que se dará de baja
+     * @return 1 si fue correcto, 0 si no
+     */
     public static int eliminarEstudiante (String matricula){
         int resultado = 0;
         try{
