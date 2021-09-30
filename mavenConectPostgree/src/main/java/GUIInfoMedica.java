@@ -17,7 +17,7 @@ import pocos.InfoSalud;
 public final class GUIInfoMedica extends javax.swing.JFrame {
     DAOInfoSalud daoInfoSalud = new DAOInfoSalud();
     InfoSalud infoSalud = null;
-    
+    int ejemplo;
     public GUIInfoMedica() {
         initComponents();
         cargarDatosSalud(CRUD.estudianteObtenido.getIdEstudiante());
