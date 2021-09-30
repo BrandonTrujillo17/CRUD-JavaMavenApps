@@ -1,0 +1,203 @@
+/*
+PostgreSQL Backup
+Database: conexionMaven/public
+Backup Time: 2021-09-30 01:58:12
+*/
+
+DROP SEQUENCE IF EXISTS "public"."historia_academica_idhistoria_academica_seq1";
+DROP SEQUENCE IF EXISTS "public"."historia_academica_idhistoria_academica_seq";
+DROP SEQUENCE IF EXISTS "public"."inf_salud_idinfo_salud_seq1";
+DROP SEQUENCE IF EXISTS "public"."inf_salud_idinfo_salud_seq";
+DROP SEQUENCE IF EXISTS "public"."origen_idorigen_seq1";
+DROP SEQUENCE IF EXISTS "public"."origen_idorigen_seq";
+DROP SEQUENCE IF EXISTS "public"."telefonos_idtelefonos_seq";
+DROP SEQUENCE IF EXISTS "public"."tutor_idtutor_seq1";
+DROP SEQUENCE IF EXISTS "public"."tutor_idtutor_seq";
+DROP TABLE IF EXISTS "public"."colegio";
+DROP TABLE IF EXISTS "public"."estudiante";
+DROP TABLE IF EXISTS "public"."historia_academica";
+DROP TABLE IF EXISTS "public"."inf_salud";
+DROP TABLE IF EXISTS "public"."origen";
+DROP TABLE IF EXISTS "public"."tutor";
+CREATE SEQUENCE "historia_academica_idhistoria_academica_seq1" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 2147483647
+START 1
+CACHE 1;
+CREATE SEQUENCE "historia_academica_idhistoria_academica_seq" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 2147483647
+START 1
+CACHE 1;
+CREATE SEQUENCE "inf_salud_idinfo_salud_seq1" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 2147483647
+START 1
+CACHE 1;
+CREATE SEQUENCE "inf_salud_idinfo_salud_seq" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 2147483647
+START 1
+CACHE 1;
+CREATE SEQUENCE "origen_idorigen_seq1" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 2147483647
+START 1
+CACHE 1;
+CREATE SEQUENCE "origen_idorigen_seq" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 2147483647
+START 1
+CACHE 1;
+CREATE SEQUENCE "telefonos_idtelefonos_seq" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 2147483647
+START 1
+CACHE 1;
+CREATE SEQUENCE "tutor_idtutor_seq1" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 2147483647
+START 1
+CACHE 1;
+CREATE SEQUENCE "tutor_idtutor_seq" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 2147483647
+START 1
+CACHE 1;
+CREATE TABLE "colegio" (
+  "tipo" varchar COLLATE "pg_catalog"."default",
+  "idcolegio" varchar COLLATE "pg_catalog"."default" NOT NULL,
+  "nombre_colegio" varchar COLLATE "pg_catalog"."default"
+)
+;
+ALTER TABLE "colegio" OWNER TO "postgres";
+CREATE TABLE "estudiante" (
+  "idestudiante" varchar COLLATE "pg_catalog"."default" NOT NULL,
+  "primer_nom" varchar(50) COLLATE "pg_catalog"."default",
+  "primer_ape" varchar(50) COLLATE "pg_catalog"."default",
+  "seg_nom" varchar(50) COLLATE "pg_catalog"."default",
+  "seg_ape" varchar(50) COLLATE "pg_catalog"."default",
+  "estado" bool NOT NULL DEFAULT false,
+  "idcolegio" varchar COLLATE "pg_catalog"."default"
+)
+;
+ALTER TABLE "estudiante" OWNER TO "postgres";
+CREATE TABLE "historia_academica" (
+  "estudiante_idestudiante" varchar COLLATE "pg_catalog"."default" NOT NULL,
+  "antiguedad" varchar COLLATE "pg_catalog"."default",
+  "año" varchar COLLATE "pg_catalog"."default",
+  "sección" varchar COLLATE "pg_catalog"."default",
+  "idhistoria_academica" int4 NOT NULL DEFAULT nextval('historia_academica_idhistoria_academica_seq1'::regclass),
+  "colegio_anterior" varchar(255) COLLATE "pg_catalog"."default"
+)
+;
+ALTER TABLE "historia_academica" OWNER TO "postgres";
+CREATE TABLE "inf_salud" (
+  "estudiante_idestudiante" varchar COLLATE "pg_catalog"."default" NOT NULL,
+  "numero_seguro" varchar COLLATE "pg_catalog"."default",
+  "tipo_seguro" varchar COLLATE "pg_catalog"."default",
+  "grupo_sanguineo" varchar COLLATE "pg_catalog"."default",
+  "idinfo_salud" int4 NOT NULL DEFAULT nextval('inf_salud_idinfo_salud_seq1'::regclass),
+  "estatura" varchar COLLATE "pg_catalog"."default",
+  "peso" varchar COLLATE "pg_catalog"."default",
+  "discapacidadvisual" varchar COLLATE "pg_catalog"."default",
+  "diabetes" varchar COLLATE "pg_catalog"."default",
+  "hipertencion" varchar COLLATE "pg_catalog"."default"
+)
+;
+ALTER TABLE "inf_salud" OWNER TO "postgres";
+CREATE TABLE "origen" (
+  "estado" varchar COLLATE "pg_catalog"."default",
+  "ciudad" varchar COLLATE "pg_catalog"."default",
+  "colonia" varchar COLLATE "pg_catalog"."default",
+  "calle_numero" varchar COLLATE "pg_catalog"."default",
+  "idorigen" int4 NOT NULL DEFAULT nextval('origen_idorigen_seq1'::regclass),
+  "idestudiante" varchar COLLATE "pg_catalog"."default"
+)
+;
+ALTER TABLE "origen" OWNER TO "postgres";
+CREATE TABLE "tutor" (
+  "estudiante_idestudiante" varchar COLLATE "pg_catalog"."default" NOT NULL,
+  "nombre_tutor" varchar COLLATE "pg_catalog"."default",
+  "apellido_paterno" varchar COLLATE "pg_catalog"."default",
+  "apellido_materno" varchar COLLATE "pg_catalog"."default",
+  "direccion_tutor" varchar COLLATE "pg_catalog"."default",
+  "idtutor" int4 NOT NULL DEFAULT nextval('tutor_idtutor_seq1'::regclass),
+  "fijo" varchar COLLATE "pg_catalog"."default",
+  "celular" varchar COLLATE "pg_catalog"."default"
+)
+;
+ALTER TABLE "tutor" OWNER TO "postgres";
+BEGIN;
+LOCK TABLE "public"."colegio" IN SHARE MODE;
+DELETE FROM "public"."colegio";
+INSERT INTO "public"."colegio" ("tipo","idcolegio","nombre_colegio") VALUES ('Pública', '3456k', 'Normal Xalapeña'),('Privada', '765t', 'Universidad estatal'),('Privada', '765y', 'Universidad federal'),('Privada', '34ty6', 'Universidad de jalisco'),('Pública', 'ee44e', 'Universidad'),('Privada', '33t6', 'Universidad luisiana');
+COMMIT;
+BEGIN;
+LOCK TABLE "public"."estudiante" IN SHARE MODE;
+DELETE FROM "public"."estudiante";
+INSERT INTO "public"."estudiante" ("idestudiante","primer_nom","primer_ape","seg_nom","seg_ape","estado","idcolegio") VALUES ('S18012157', 'Brandon', 'Trujillo', 'Adalit', 'Capistran', 't', '3456k'),('S17012254', 'Josué', 'Capistran', '*No existe*', 'García', 't', '3456k'),('S0974656', 'Luis', 'Romero', 'Martín', 'Peña', 't', '765y'),('S21098746', 'Juan', 'Mora', 'Luis', 'Ruíz', 't', '765y'),('S9837644', 'Marcos', 'Cuevas', 'Javier', 'Romero', 't', '34ty6'),('1234567890', 'Prueba', 'Prueba', 'Prueba', 'Prueba', 'f', '765t');
+COMMIT;
+BEGIN;
+LOCK TABLE "public"."historia_academica" IN SHARE MODE;
+DELETE FROM "public"."historia_academica";
+INSERT INTO "public"."historia_academica" ("estudiante_idestudiante","antiguedad","año","sección","idhistoria_academica","colegio_anterior") VALUES ('S18012157', '3 años', '2018', 'A', 1, '*no existe*'),('S17012254', '3 años', '2018', 'A', 4, 'CeCyTev'),('S9837644', '3 años', '2018', 'B', 5, 'Prepa');
+COMMIT;
+BEGIN;
+LOCK TABLE "public"."inf_salud" IN SHARE MODE;
+DELETE FROM "public"."inf_salud";
+COMMIT;
+BEGIN;
+LOCK TABLE "public"."origen" IN SHARE MODE;
+DELETE FROM "public"."origen";
+COMMIT;
+BEGIN;
+LOCK TABLE "public"."tutor" IN SHARE MODE;
+DELETE FROM "public"."tutor";
+INSERT INTO "public"."tutor" ("estudiante_idestudiante","nombre_tutor","apellido_paterno","apellido_materno","direccion_tutor","idtutor","fijo","celular") VALUES ('1234567890', 'Zuriel', 'Diaz', 'Agustin', 'Calle Madero', 2, '2791240909', '22812144'),('S18012157', 'Josué', 'Capistran', 'García', 'Calle Madero', 3, '228167564', '2791240908');
+COMMIT;
+ALTER TABLE "colegio" ADD CONSTRAINT "colegio_pkey" PRIMARY KEY ("idcolegio");
+ALTER TABLE "estudiante" ADD CONSTRAINT "estudiante_pkey" PRIMARY KEY ("idestudiante");
+ALTER TABLE "historia_academica" ADD CONSTRAINT "historia_academica_pkey" PRIMARY KEY ("idhistoria_academica");
+ALTER TABLE "inf_salud" ADD CONSTRAINT "inf_salud_pkey" PRIMARY KEY ("idinfo_salud");
+ALTER TABLE "origen" ADD CONSTRAINT "origen_pkey" PRIMARY KEY ("idorigen");
+ALTER TABLE "tutor" ADD CONSTRAINT "tutor_pkey" PRIMARY KEY ("idtutor");
+ALTER TABLE "estudiante" ADD CONSTRAINT "estudiante_fk" FOREIGN KEY ("idcolegio") REFERENCES "public"."colegio" ("idcolegio") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "inf_salud" ADD CONSTRAINT "inf_salud_fk" FOREIGN KEY ("estudiante_idestudiante") REFERENCES "public"."estudiante" ("idestudiante") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "origen" ADD CONSTRAINT "origen_fk" FOREIGN KEY ("idestudiante") REFERENCES "public"."estudiante" ("idestudiante") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "tutor" ADD CONSTRAINT "tutor_fk" FOREIGN KEY ("estudiante_idestudiante") REFERENCES "public"."estudiante" ("idestudiante") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER SEQUENCE "historia_academica_idhistoria_academica_seq1"
+OWNED BY "historia_academica"."idhistoria_academica";
+SELECT setval('"historia_academica_idhistoria_academica_seq1"', 6, true);
+ALTER SEQUENCE "historia_academica_idhistoria_academica_seq1" OWNER TO "postgres";
+SELECT setval('"historia_academica_idhistoria_academica_seq"', 2, false);
+ALTER SEQUENCE "historia_academica_idhistoria_academica_seq" OWNER TO "postgres";
+ALTER SEQUENCE "inf_salud_idinfo_salud_seq1"
+OWNED BY "inf_salud"."idinfo_salud";
+SELECT setval('"inf_salud_idinfo_salud_seq1"', 2, false);
+ALTER SEQUENCE "inf_salud_idinfo_salud_seq1" OWNER TO "postgres";
+SELECT setval('"inf_salud_idinfo_salud_seq"', 2, false);
+ALTER SEQUENCE "inf_salud_idinfo_salud_seq" OWNER TO "postgres";
+ALTER SEQUENCE "origen_idorigen_seq1"
+OWNED BY "origen"."idorigen";
+SELECT setval('"origen_idorigen_seq1"', 2, false);
+ALTER SEQUENCE "origen_idorigen_seq1" OWNER TO "postgres";
+SELECT setval('"origen_idorigen_seq"', 2, false);
+ALTER SEQUENCE "origen_idorigen_seq" OWNER TO "postgres";
+SELECT setval('"telefonos_idtelefonos_seq"', 2, false);
+ALTER SEQUENCE "telefonos_idtelefonos_seq" OWNER TO "postgres";
+ALTER SEQUENCE "tutor_idtutor_seq1"
+OWNED BY "tutor"."idtutor";
+SELECT setval('"tutor_idtutor_seq1"', 4, true);
+ALTER SEQUENCE "tutor_idtutor_seq1" OWNER TO "postgres";
+SELECT setval('"tutor_idtutor_seq"', 2, false);
+ALTER SEQUENCE "tutor_idtutor_seq" OWNER TO "postgres";
