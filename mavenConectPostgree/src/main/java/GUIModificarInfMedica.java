@@ -83,6 +83,7 @@ public final class GUIModificarInfMedica extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
         jLabel5.setText("Tipo de sangre");
 
+        btnCancelar.setBackground(new java.awt.Color(204, 0, 0));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +91,8 @@ public final class GUIModificarInfMedica extends javax.swing.JFrame {
             }
         });
 
+        btnGuardar.setBackground(new java.awt.Color(153, 255, 0));
+        btnGuardar.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +113,7 @@ public final class GUIModificarInfMedica extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
         jLabel8.setText("Discapacidad visual");
 
-        cbDiscVisual.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccionar --", "Hipermetropia", "Astigmatismo", "Miopía", "Ceguera parcial", "Ceguera completa" }));
+        cbDiscVisual.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccionar --", "Hipermetropia", "Astigmatismo", "Miopía", "Ceguera parcial", "Ceguera completa", "Ninguna" }));
 
         chbDiabetes.setText("Diabetes");
 

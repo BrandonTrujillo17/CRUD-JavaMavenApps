@@ -198,6 +198,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCancelar">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="cc" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
           <Events>
@@ -206,6 +209,12 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnGuardar">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="ff" red="99" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="DejaVu Sans" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
           <Events>
@@ -271,13 +280,14 @@
         <Component class="javax.swing.JComboBox" name="cbDiscVisual">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="6">
+              <StringArray count="7">
                 <StringItem index="0" value="-- Seleccionar --"/>
                 <StringItem index="1" value="Hipermetropia"/>
                 <StringItem index="2" value="Astigmatismo"/>
                 <StringItem index="3" value="Miop&#xed;a"/>
                 <StringItem index="4" value="Ceguera parcial"/>
                 <StringItem index="5" value="Ceguera completa"/>
+                <StringItem index="6" value="Ninguna"/>
               </StringArray>
             </Property>
           </Properties>
