@@ -11,7 +11,7 @@ package pocos;
 public class Tutor {
     
     private int idTutor;
-    private int idEstudiante;
+    private String idEstudiante;
     private String nombreEstudiante;
     private String nombre;
     private String apellidoPaterno;
@@ -28,7 +28,7 @@ public class Tutor {
         this.idTutor = idTutor;
     }
 
-    public int getIdEstudiante() {
+    public String getIdEstudiante() {
         return idEstudiante;
     }
     
@@ -40,7 +40,7 @@ public class Tutor {
         this.nombreEstudiante = nombreEstudiante;
     }
 
-    public void setIdEstudiante(int idEstudiante) {
+    public void setIdEstudiante(String idEstudiante) {
         this.idEstudiante = idEstudiante;
     }
 

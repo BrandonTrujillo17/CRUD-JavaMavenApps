@@ -39,7 +39,7 @@ public class DAOTutor {
                 while(rs.next()){
                     Tutor tutor = new Tutor();
                     tutor.setIdTutor(rs.getInt("idtutor"));
-                    tutor.setIdEstudiante(rs.getInt("estudiante_idestudiante"));
+                    tutor.setIdEstudiante(rs.getString("estudiante_idestudiante"));
                     tutor.setNombre(rs.getString("nombre_tutor"));
                     tutor.setApellidoPaterno(rs.getString("apellido_paterno"));
                     tutor.setApellidoMaterno(rs.getString("apellido_materno"));
