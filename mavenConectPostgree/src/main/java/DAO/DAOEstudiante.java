@@ -23,7 +23,9 @@ public class DAOEstudiante {
 
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery(consulta);
-            Estudiante estudiantesObtenidos = new Estudiante();
+      
+            while(rs.next()){
+                 Estudiante estudiantesObtenidos = new Estudiante();
                 estudiantesObtenidos.setIdEstudiante(rs.getString("idestudiante"));
                 estudiantesObtenidos.setPrimerNombre(rs.getString("primer_nom"));
                 estudiantesObtenidos.setSegundoNombre(rs.getString("seg_nom"));
@@ -32,14 +34,6 @@ public class DAOEstudiante {
                 estudiantesObtenidos.setActivo(rs.getBoolean("estado"));
                 estudiantesObtenidos.setClaveColegio(rs.getString("idcolegio"));
                 estudiantesObtenidos.setNombreColegio(rs.getString("nombre_colegio"));
-            while(rs.next()){
-                
-                estudiantesObtenidos.setIdEstudiante(rs.getString(1));
-                estudiantesObtenidos.setPrimerNombre(rs.getString(2));
-                estudiantesObtenidos.setSegundoNombre(rs.getString(4));
-                estudiantesObtenidos.setPrimerApellido(rs.getString(3));
-                estudiantesObtenidos.setSegundoApellido(rs.getString(5));
-                estudiantesObtenidos.setActivo(rs.getBoolean(6));
                 estudiantes.add(estudiantesObtenidos);
             }
             conn.close();

@@ -275,8 +275,7 @@ public class CRUD extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_btnInfoMedicaActionPerformed
 
-<<<<<<< HEAD
-=======
+
     private void btnOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrigenActionPerformed
         this.obtenerSeleccion();
        if(estudianteObtenido.getIdEstudiante().equals("")){
@@ -288,7 +287,6 @@ public class CRUD extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_btnOrigenActionPerformed
 
->>>>>>> main
     private void eliminarEstudiante(){
         obtenerSeleccion();
         if(haySeleccion){
