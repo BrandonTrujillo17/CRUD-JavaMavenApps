@@ -14,10 +14,18 @@ import pocos.InfoSalud;
 import pocos.Origen;
 
 /**
- *
+ *Clase para el acceso a datos de la clase Origen, todas las conexiones y manipulaciones de dicho
+ * objeto se encuentran aquí
  * @author josuecg
  */
 public class DAOOrigen {
+    
+    /***
+     * Este método registra los datos de origen de un estudiante dentro de la BD
+     * @param origen Sirve para la conexión de la información de origen a la BD
+     * @param matricula Hace referencia a la matricula del estudiante donde se registrara su origen
+     * @return resultado Si es correcto el resultado entonces sera 1
+     */
     public int registrarDatosOrigen(Origen origen, String matricula){
          int resultado = 0;
         try{
@@ -38,6 +46,12 @@ public class DAOOrigen {
         return resultado;
     }
     
+    /***
+     * Este método actualiza los datos de origen de el estudiante seleccionado
+     * @param origen Sirve para actualizar los datos de origen
+     * @param matricula Del estudiante seleccionado, con este dato se buscará dentro de la BD
+     * @return resultado Si es 1 el resultado fue exitoso
+     */
      public int actualizarDatosOrigen(Origen origen, String matricula){
         int resultado = 0;
         try{
@@ -58,7 +72,11 @@ public class DAOOrigen {
         return resultado;
     }
     
-    
+    /***
+     * Este método recupera la información de origen del estudiante seleccionado
+     * @param matricula sirve para buscar la información dentro de la BD
+     * @return origen Retorna el objeto encontrado, si no retorna null
+     */
     public Origen origenEstudiante(String matricula){
          Origen origenEstudiante = new Origen();
          try{

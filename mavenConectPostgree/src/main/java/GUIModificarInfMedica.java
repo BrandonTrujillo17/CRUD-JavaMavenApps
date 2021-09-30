@@ -10,7 +10,8 @@ import pocos.InfoSalud;
  */
 
 /**
- *
+ *Esta clase GUI sirve para la modificación y creación del registro de la 
+ * información medica del estudiante seleccionado
  * @author josuecg
  */
 public final class GUIModificarInfMedica extends javax.swing.JFrame {
@@ -218,6 +219,11 @@ public final class GUIModificarInfMedica extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /***
+     * Este método carga la información medica del estudiante seleccionado, si el estudiante
+     * seleccionado no tiene información medica, la información se carga vaciia
+     * @param infoSalud Sirve para cargar los elementos de la información de salud dentro de los componentes de la GUI
+     */
     public void cargarInfoMedica(InfoSalud infoSalud){
         if(infoSalud.getIdInfo()!=0){
             this.tbNoSeguro.setText(infoSalud.getNumeroSeguro());
@@ -235,18 +241,29 @@ public final class GUIModificarInfMedica extends javax.swing.JFrame {
         }
     }
     
+    
+    /***
+     * Este método carga las estaturas mediante un for dentro del comboBox estaturas
+     */
     public void cargarEstaturas(){
         for(int i=130;i<=210;i++){
             this.cbEstatura.addItem(i+" cm");
         }
     }
     
+    /***
+     * Este método carga el peso al comboBox de peso mediante un for
+     */
     public void cargarPeso(){
         for(int i=35;i<=150;i++){
             this.cbPeso.addItem(i+"kg");
         }
     }
 
+    /***
+     * Este método valida los campos de la GUI
+     * @return validos Si es 1 validos quiere decir que los datos no estan completos
+     */
     public int validarCombos(){
         int validos = 0;
         if(this.cbDiscVisual.getSelectedIndex()==0 || this.cbEstatura.getSelectedIndex()==0 || 

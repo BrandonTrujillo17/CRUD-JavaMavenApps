@@ -15,10 +15,17 @@ import pocos.Estudiante;
 import pocos.InfoSalud;
 
 /**
- *
+ *Esta clase sirve como acceso de creación de registros para la clase InfoSalud
+ * todos los métodos aqui declarados permiten la creación de registros
  * @author josuecg
  */
 public class DAOInfoSalud {
+    
+    /***
+     * Este método retorna los datos de salud del estudiante seleccionado
+     * @param matriculaEstudiante El parametro que sirve para buscar la info del estudiante
+     * @return InfoSalud retorna la información del estudiante encontrada
+     */
     public InfoSalud returnDatosSalud(String matriculaEstudiante){
         InfoSalud infoEstudiante = new InfoSalud();
         try{
@@ -48,6 +55,12 @@ public class DAOInfoSalud {
     return infoEstudiante;
     }
     
+    /***
+     * Este método registra la información medica del estudiante seleccionado
+     * @param infoSalud es la información de salud del estudiante
+     * @param matricula es la matricula del estudiante al cual se registrará su informcaión
+     * @return si es 1 el refistro fue exitoso
+     */
     public int registrarInfMedica(InfoSalud infoSalud, String matricula){
         int resultado = 0;
         try{
@@ -73,6 +86,12 @@ public class DAOInfoSalud {
         return resultado;
     }
     
+    /***
+     * Este metodo permite actualizar la información medica del estudiante seleccionado
+     * @param infoSalud Es la información medica
+     * @param matricula El parametro del estudiante a modificar
+     * @return si es 1 el registro fue exitoso
+     */
     public int actualizarInfMedica(InfoSalud infoSalud, String matricula){
         int resultado = 0;
         try{
